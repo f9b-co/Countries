@@ -1,5 +1,18 @@
+body {
+  min-height: 100%;
+}
+section {
+    min-width: 800px;
+}
 table img {
   width: 6vw;
   height: 4vw;
   border-radius: 15%;
+  cursor: pointer;
+}
+#countriesList {
+  height: 60%;
+}
+#map {
+  height: 40%;
 }
