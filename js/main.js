@@ -1,6 +1,6 @@
-const table = document.getElementById("countriesTable");
-const urlApi =
-  "https://restcountries.eu/rest/v2/region/europe?fields=name;capital;population;area;flag;borders;alpha3Code";
+const tableBody = document.getElementById("countriesTableBody");
+const urlApi = "./data/regionalbloc-eu.json";
+//"https://restcountries.eu/rest/v2/region/europe?fields=name;capital;population;area;flag;borders;alpha3Code";
 
 document.onload = loadCountries(urlApi);
 
@@ -19,23 +19,28 @@ function tableize(countries) {
     const cellVal = new Array(
       notNullCheck(country.name),
       notNullCheck(country.capital),
-      notNullCheck(numformat(country.population)),
-      notNullCheck(numformat(country.area)),
+      notNullCheck(numFormat(country.population)),
+      notNullCheck(numFormat(country.area)),
       densityCalc(country.population, country.area),
       notNullCheck(country.borders.length),
       flagIcon
     );
     const tr = createNode("tr");
 
-
     for (let i = 0; i < cellVal.length; i++) {
       const el = cellVal[i];
       const td = createNode("td");
+      if (i != 6) {
+        td.setAttribute("class", "greyCells");
+      }
+      if (i == 0) {
+        td.setAttribute("class", "greyCells cellsTextLeft bold");
+      }
       td.innerHTML = el;
       append(tr, td);
     }
 
-    append(table, tr);
+    append(tableBody, tr);
 
     makeFlagClickable(country.alpha3Code, country.name, country.capital);
   });
@@ -54,14 +59,13 @@ function makeFlagClickable(alpha3Code, name, capital) {
             "," +
             name
         );
-      window.location = "#map";
     });
 }
 
 function densityCalc(pop, area) {
   if (pop == null || area == null) {
     return "N/A";
-  } else return numformat(pop / area);
+  } else return numFormat(pop / area);
 }
 
 function notNullCheck(el) {
@@ -70,14 +74,14 @@ function notNullCheck(el) {
   } else return "N/A";
 }
 
-function numformat(x) {
+function numFormat(x) {
   return new Intl.NumberFormat("en-GB", { maximumFractionDigits: 3 }).format(x);
-}
-
-function createNode(el) {
-  return document.createElement(el);
 }
 
 function append(parent, el) {
   return parent.appendChild(el);
+}
+
+function createNode(el) {
+  return document.createElement(el);
 }

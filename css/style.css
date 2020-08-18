@@ -1,18 +1,79 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+html,
 body {
-  min-height: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+}
+h1 {
+  width: 100%;
+  height: 3%;
+  margin-block-start: 0.2em;
+  margin-block-end: 1em;
+  font-size: 1.4em;
+  color: grey;
 }
 section {
-    min-width: 800px;
+  min-width: 512px;
+  max-width: 1024px;
 }
 table img {
-  width: 6vw;
-  height: 4vw;
+  min-width: 25px;
+  max-width: 50px;
   border-radius: 15%;
+  margin: 15%;
   cursor: pointer;
 }
+.bold {
+  font-weight: bold;
+}
+.cellsTextLeft {
+  text-align: left;
+  padding-left: 0.5em;
+}
+.greyCells {
+  background-color: rgb(227, 232, 235);
+}
+#main {
+  height: 62%;
+  overflow-x: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+#countriesHeaders {
+  height: 10%;
+  color: white;
+  background-color: rgb(0, 117, 167);
+}
 #countriesList {
-  height: 60%;
+  height: 82%;
+  overflow: scroll;
+}
+#countriesTableHead {
+  padding-right: 20px;
+  height: 100%;
+  border-top: 1px solid rgb(0, 117, 167);
+  text-align: center;
+}
+#countriesTableBody {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid rgb(0, 117, 167);
+  text-align: center;
 }
 #map {
-  height: 40%;
+  height: 37%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#localMap {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
