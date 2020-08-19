@@ -21,8 +21,8 @@ function tableize(countries) {
     const cellVal = new Array(
       notNullCheck(country.name),
       notNullCheck(country.capital),
-      notNullCheck(numFormat(country.population)),
-      notNullCheck(numFormat(country.area)),
+      notNullCheck(country.population ? numFormat(country.population) : ""),
+      notNullCheck(country.area ? numFormat(country.area) : ""),
       densityCalc(country.population, country.area),
       notNullCheck(country.borders.length),
       flagIcon
