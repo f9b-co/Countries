@@ -1,6 +1,7 @@
 const tableBody = document.getElementById("countriesTableBody");
-const urlApi = "./data/regionalbloc-eu.json";
-//"https://restcountries.eu/rest/v2/region/europe?fields=name;capital;population;area;flag;borders;alpha3Code";
+const urlApi =
+  "https://restcountries.eu/rest/v2/region/europe?fields=name;capital;population;area;flag;borders;alpha3Code";
+//"./data/regionalbloc-eu.json"; //for local feed if api server out of reach
 
 document.onload = loadCountries(urlApi);
 
@@ -12,6 +13,7 @@ function loadCountries(url) {
 }
 
 function tableize(countries) {
+  console.log(countries);
   countries.forEach((country) => {
     const flagIcon = notNullCheck(country.flag)
       ? '<img id="' + country.alpha3Code + 'FlagId" src="' + country.flag + '">'
