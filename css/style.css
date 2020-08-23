@@ -1,9 +1,11 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 html,
 body {
-  height: 100%;
+  height: 100vh;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -13,10 +15,8 @@ body {
 }
 h1 {
   width: 100%;
-  height: 3%;
-  margin-block-start: 0.2em;
-  margin-block-end: 1em;
-  font-size: 1.4em;
+  height: 6vh;
+  font-size: 1.4rem;
   color: grey;
 }
 section {
@@ -24,7 +24,7 @@ section {
   max-width: 1024px;
 }
 select {
-  height: 230%;
+  height: 100%;
   border: none;
   font-size: 1em;
   font-weight: bold;
@@ -42,45 +42,47 @@ table img {
 }
 .cellsTextLeft {
   text-align: left;
-  padding-left: 0.5em;
+  padding-left: 0.5rem;
 }
 .greyCells {
   background-color: rgb(227, 232, 235);
 }
 #main {
-  height: 62%;
+  height: 60vh;
   overflow-x: auto;
   margin-left: auto;
   margin-right: auto;
 }
 #countriesHeaders {
-  height: 10%;
+  height: 8vh;
   color: white;
   background-color: rgb(0, 117, 167);
 }
 #countriesList {
-  height: 80%;
+  height: 46vh;
   overflow-y: scroll;
 }
 #countriesTableHead {
   padding-right: 20px;
   height: 100%;
   border-top: 1px solid rgb(0, 117, 167);
+  font-size: 1rem;
   text-align: center;
 }
 #countriesTableBody {
   width: 100%;
   height: 100%;
   border-bottom: 1px solid rgb(0, 117, 167);
+  font-size: 1rem;
   text-align: center;
 }
 #map {
-  height: 37%;
+  height: 40vh;
   margin-left: auto;
   margin-right: auto;
 }
 #localMap {
   width: 100%;
-  height: 100%;
+  height: 40vh;
   border: none;
 }
