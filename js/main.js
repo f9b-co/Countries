@@ -1,7 +1,30 @@
+const selArea = document.querySelector("#area");
 const tableBody = document.getElementById("countriesTableBody");
-const urlApi =
-  "https://restcountries.eu/rest/v2/region/europe?fields=name;capital;population;area;flag;borders;alpha3Code";
+const areasList = ["Afrique", "Amerique", "Asie", "Europe", "Oceanie"];
+const apiRegionsList = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+for (let i = 0; i < areasList.length; i++) {
+  const newOpt = createNode("option");
+  newOpt.value = apiRegionsList[i];
+  newOpt.text = areasList[i];
+  if (newOpt.text == "Europe") {
+    newOpt.selected = "selected";
+  }
+  selArea.add(newOpt);
+}
+const urlPath = "https://restcountries.eu/rest/v2/region/";
+let urlSlug = selArea.value;
+const urlQuery = "?fields=name;capital;population;area;flag;borders;alpha3Code";
+let urlApi = urlPath + urlSlug + urlQuery;
 //"./data/regionalbloc-eu.json"; //for local feed if api server out of reach
+tableBody.oldHTML = tableBody.innerHTML;
+
+selArea.addEventListener("change", () => {
+  changeMapSrc(selArea.options[selArea.selectedIndex].text);
+  urlSlug = selArea.value;
+  urlApi = urlPath + urlSlug + urlQuery;
+  tableBody.innerHTML = tableBody.oldHTML;
+  loadCountries(urlApi);
+});
 
 document.onload = loadCountries(urlApi);
 
@@ -52,16 +75,18 @@ function makeFlagClickable(alpha3Code, name, capital) {
   document
     .getElementById(alpha3Code + "FlagId")
     .addEventListener("click", function () {
-      document
-        .getElementById("localMap")
-        .setAttribute(
-          "src",
-          "https://www.google.com/maps/embed/v1/place?key=AIzaSyAav3RZzTVK1b3FpvMaDKEI5CNzz-vdHlc&q=" +
-            capital +
-            "," +
-            name
-        );
+      changeMapSrc(capital + "," + name);
     });
+}
+
+function changeMapSrc(qParam) {
+  document
+    .getElementById("localMap")
+    .setAttribute(
+      "src",
+      "https://www.google.com/maps/embed/v1/place?key=AIzaSyAav3RZzTVK1b3FpvMaDKEI5CNzz-vdHlc&q=" +
+        qParam
+    );
 }
 
 function densityCalc(pop, area) {
