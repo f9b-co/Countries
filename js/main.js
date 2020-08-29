@@ -24,6 +24,7 @@ selArea.addEventListener("change", () => {
   urlApi = urlPath + urlSlug + urlQuery;
   tableBody.innerHTML = tableBody.oldHTML;
   loadCountries(urlApi);
+  selArea.blur();
 });
 
 document.onload = loadCountries(urlApi);
